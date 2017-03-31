@@ -1,0 +1,301 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>css中常用知识点总结 &#8211; Yyt&&Dandan Blog</title>
+<meta name="description" content="在写css时常用到的一些样式">
+<meta name="keywords" content="Web前端总结">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css中常用知识点总结">
+<meta property="og:description" content="在写css时常用到的一些样式">
+<meta property="og:url" content="//myBlog/css/">
+<meta property="og:site_name" content="Yyt&&Dandan Blog">
+
+
+
+
+
+<link rel="canonical" href="//myBlog/css/">
+<link href="//myBlog/feed.xml" type="application/atom+xml" rel="alternate" title="Yyt&&Dandan Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="//myBlog/assets/css/main.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="//myBlog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="//myBlog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="//myBlog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="//myBlog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="//myBlog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="//myBlog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="//myBlog/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+<style type="text/css">body {background-image:url(//myBlog/images/index-bg.jpg);}</style>
+
+
+</head>
+
+<body id="post"  style="position: relative">
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">Open Menu</button>
+	<ul class="dl-menu">
+		<li><a href="//myBlog/">首页</a></li>
+		<li>
+			<a href="#">关于我</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="//myBlog/images/my.jpg" alt="Yyt photo" class="author-photo">
+					<h4>Yyt</h4>
+					<p>了解自己</p>
+				</li>
+				<li><a href="//myBlog/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				<li>
+					<a href="mailto:summerdha@163.com"><i class="fa fa-fw fa-envelope"></i> Email</a>
+				</li>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		</li>
+		<li>
+			<a href="#">分类</a>
+			<ul class="dl-submenu">
+				<li><a href="//myBlog/posts/">所有文章</a></li>
+				<li><a href="//myBlog/tags/">所有标签</a></li>
+			</ul>
+		</li>
+		
+	    
+	    <li><a href="//myBlog/theme-setup/" >Theme Setup</a></li>
+	  
+	    
+	    <li><a href="http://mademistakes.com" target="_blank">External Link</a></li>
+	  
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        
+          <h1 class="entry-title"><a href="//myBlog/css/" rel="bookmark" title="css中常用知识点总结">css中常用知识点总结</a></h1>
+        
+        <h2><span class="entry-date date published"><time datetime="2017-03-20T00:00:00+00:00">March 20, 2017</time></span></h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+Reading time ~1 minute
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <h2 id="section">1、使用盒模型</h2>
+
+<blockquote>
+  <h5 id="divmarginpaddingdiv">在写样式的时候，会遇到子div写margin或者padding将父div撑大的情况。</h5>
+</blockquote>
+
+<blockquote>
+  <h5 id="section-1">为避免这种情况，可使用盒模型。</h5>
+</blockquote>
+
+<p><code class="highlighter-rouge">兼容各浏览器写法</code></p>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nc">.box</span><span class="p">{</span>
+ <span class="nl">-webkit-box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+    <span class="nl">-moz-box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+    <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">如果想全局使用盒模型</code></p>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="c">/* 可以用通配选择器 * 加上css代码 */</span>
+<span class="o">*</span> <span class="p">{</span>
+ <span class="nl">-webkit-box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+    <span class="nl">-moz-box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+    <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="input">2、关于input样式</h2>
+
+<h6 id="inputrgba">有时候想改变input的背景色透明度，但文字不想变透明，就可以使用rgba</h6>
+
+<h6 id="cssrgba">css中的rgba可以改变一个标签的背景透明度，标签内的文字不透明</h6>
+
+<h3 id="section-2">例如</h3>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+	<span class="nt">&lt;head&gt;</span>
+		<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;title&gt;&lt;/title&gt;</span>
+		<span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+			<span class="nt">input</span> <span class="p">{</span>
+				<span class="nl">color</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+				<span class="nl">background-color</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.2</span><span class="p">);</span>
+			<span class="p">}</span>
+		<span class="nt">&lt;/style&gt;</span>
+	<span class="nt">&lt;/head&gt;</span>
+	<span class="nt">&lt;body&gt;</span>
+		<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"请输入你的姓名"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<h5 id="section-3">虽然输入框背景变透明了，输入框中的文字，不会变透明。</h5>
+
+<h5 id="placeholder">输入框中的placeholder文字颜色也可以改变</h5>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code>	<span class="nd">::webkit-input-placeholder</span><span class="o">:</span><span class="p">{</span> <span class="c">/* Chrome/Opera/Safrai */</span>
+	  <span class="nl">color</span> <span class="p">:</span> <span class="no">green</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="nd">::mos-placeholder</span><span class="o">:</span><span class="p">{</span> <span class="c">/* Firefox 19+ */</span>
+	  <span class="nl">color</span> <span class="p">:</span> <span class="no">green</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="nd">:ms-input-placeholder</span><span class="o">:</span><span class="p">{</span>	<span class="c">/* IE 10+ */</span>
+	  <span class="nl">color</span> <span class="p">:</span> <span class="no">green</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="nd">:webkit-placeholder</span><span class="o">:</span><span class="p">{</span> <span class="c">/* Firefox 18- */</span>
+	  <span class="nl">color</span> <span class="p">:</span> <span class="no">green</span><span class="p">;</span>
+	<span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="button">3、去除button的样式</h2>
+
+<p>border : none;</p>
+
+<h2 id="inputbutton">4、去除input、button点击后外边框：</h2>
+
+<p>Outline-style:none;</p>
+
+<h2 id="section-4">5、消除浮动：</h2>
+
+<h5 id="section-5">以前总搞不明白，为什么要消除浮动，只有亲身经历过才深有体会。</h5>
+
+<h5 id="divfloatdiv">当所有子div用float的时候，父div的高度撑不起来。这样会造成布局的混乱。</h5>
+
+<h5 id="divclearclear">在父级div加个clear类，给clear写样式，消除浮动</h5>
+<div class="language-css highlighter-rouge"><pre class="highlight"><code>	<span class="c">/*用after方法来消除浮动*/</span>
+	<span class="nc">.clear</span><span class="p">{</span><span class="py">zoom</span><span class="p">:</span><span class="m">1</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="nc">.clear</span><span class="nd">:after</span><span class="p">{</span>
+		<span class="nl">clear</span><span class="p">:</span><span class="nb">both</span><span class="p">;</span>
+		<span class="nl">content</span><span class="p">:</span><span class="s2">'.'</span><span class="p">;</span>
+		<span class="nl">display</span><span class="p">:</span><span class="nb">block</span><span class="p">;</span>
+		<span class="nl">width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+		<span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+		<span class="nl">visibility</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;</span>
+	<span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="css">6、CSS控制文字只显示一行，超出部分显示省略号</h2>
+
+<h5 id="section-6">有时候遇到一行文字超出宽度后，后面部分用省略号的需求</h5>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code>    <span class="nc">.title</span><span class="p">{</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="m">#8a8a8a</span><span class="p">;</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">16em</span><span class="p">;</span>
+        <span class="nl">white-space</span><span class="p">:</span> <span class="nb">nowrap</span><span class="p">;</span> 
+        <span class="nl">text-overflow</span><span class="p">:</span> <span class="n">ellipsis</span><span class="p">;</span> 
+        <span class="nl">-o-text-overflow</span><span class="p">:</span> <span class="n">ellipsis</span><span class="p">;</span> 
+        <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+    <span class="p">}</span>
+
+</code></pre>
+</div>
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="//myBlog/tags/#Web前端总结" title="Pages tagged Web前端总结" class="tag"><span class="term">Web前端总结</span></a></span>
+        
+        <div class="social-share">
+  <ul class="socialcount socialcount-small inline-list">
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=//myBlog/css/" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=//myBlog/css/" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=//myBlog/css/" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+  </ul>
+</div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    <div class="read-more">
+  
+    <div class="read-more-header">
+      <a href="//myBlog/background-image/" class="read-more-btn">Read More</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="//myBlog/background-image/" title="Html的模板使用">Html的模板使用</a></h3>
+      <p>在使用重复性代码时，可用Html模板 <a href="//myBlog/background-image/">Continue reading</a></p>
+    </div><!-- /.read-more-content -->
+  
+  <div class="read-more-list">
+    
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2017 Yyt</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="//myBlog/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="//myBlog/assets/js/scripts.min.js"></script>
+
+
+
+	        
+
+</body>
+</html>
