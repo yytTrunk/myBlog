@@ -1,0 +1,54 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+{% include head.html %}
+</head>
+{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+{% assign tags_list = site_tags | split:',' | sort %}
+<body id="post-index" {% if page.image.feature %}class="feature"{% endif %}>
+
+{% include browser-upgrade.html %}
+{% include navigation.html %}
+<div class="content">
+<div class="entry-header">
+  <!--{% if page.image.credit %}<div class="image-credit">Image source: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></div> /.image-credit {% endif %}-->
+  {% if page.image.feature %}
+    <div class="entry-image">
+      <img src="{{ site.url }}/images/index-bg.jpg" alt="{{ page.title }}">
+    </div><!-- /.entry-image -->
+  {% endif %}
+  <div class="header-title">
+    <div class="header-title-wrap">
+      <h1>{{ site.title }}</h1>
+      <h2>生活从此变美好</h2>
+      <!--<h2>{{ page.title }}</h2>-->
+    </div><!-- /.header-title-wrap -->
+  </div><!-- /.header-title -->
+</div><!-- /.entry-header -->
+
+<div class="page-content">
+  <div id="main" role="main">
+    {{ content }}
+  </div><!-- /#main -->
+  <div class="classification">
+      <div class="classification-title">分类</div>
+      {% for item in (0..site.tags.size) %}{% unless forloop.last %}
+      {% capture this_word %}{{ tags_list[item] | strip_newlines }}{% endcapture %}
+        <li><a href="{{ site.url }}/tags/" class="tag"><span class="term">{{ this_word }}</span> <span class="count">({{ site.tags[this_word].size }})</span></a></li>
+      {% endunless %}{% endfor %}
+  </div>
+  <div class="clear"></div>
+</div>
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    {% include footer.html %}
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+{% include scripts.html %}          
+</div>
+</body>
+</html>
