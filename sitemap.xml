@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>/myBlog/css/</loc>
+<loc>/css/</loc>
 <lastmod>2017-03-20T00:00:00+00:00</lastmod>
 </url>
 <url>
-<loc>/myBlog/background-image/</loc>
+<loc>/background-image/</loc>
 <lastmod>2017-03-13T00:00:00+00:00</lastmod>
 </url>
 <url>
-<loc>/myBlog/404.html</loc>
+<loc>/404.html</loc>
 </url>
 <url>
-<loc>/myBlog/</loc>
+<loc>/</loc>
 </url>
 <url>
-<loc>/myBlog/posts/</loc>
+<loc>/posts/</loc>
 </url>
 <url>
-<loc>/myBlog/tags/</loc>
+<loc>/tags/</loc>
 </url>
 <url>
-<loc>/myBlog/theme-setup/</loc>
+<loc>/theme-setup/</loc>
 </url>
 <url>
-<loc>/myBlog/about/</loc>
+<loc>/about/</loc>
 </url>
 </urlset>
