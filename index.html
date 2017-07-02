@@ -236,6 +236,7 @@ Reading time ~1 minute
 <h5 id="divfloatdiv">当所有子div用float的时候，父div的高度撑不起来。这样会造成布局的混乱。</h5>
 
 <h5 id="divclearclear">在父级div加个clear类，给clear写样式，消除浮动</h5>
+<<<<<<< HEAD
 <div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="c">/*用after方法来消除浮动*/</span>
 <span class="nc">.clear</span><span class="p">{</span><span class="py">zoom</span><span class="p">:</span><span class="m">1</span><span class="p">;</span>
 <span class="p">}</span>
@@ -247,6 +248,19 @@ Reading time ~1 minute
 	<span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
 	<span class="nl">visibility</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;</span>
 <span class="p">}</span>
+=======
+<div class="language-css highlighter-rouge"><pre class="highlight"><code>	<span class="c">/*用after方法来消除浮动*/</span>
+	<span class="nc">.clear</span><span class="p">{</span><span class="py">zoom</span><span class="p">:</span><span class="m">1</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="nc">.clear</span><span class="nd">:after</span><span class="p">{</span>
+		<span class="nl">clear</span><span class="p">:</span><span class="nb">both</span><span class="p">;</span>
+		<span class="nl">content</span><span class="p">:</span><span class="s2">'.'</span><span class="p">;</span>
+		<span class="nl">display</span><span class="p">:</span><span class="nb">block</span><span class="p">;</span>
+		<span class="nl">width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+		<span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+		<span class="nl">visibility</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;</span>
+	<span class="p">}</span>
+>>>>>>> aea9351178fb45b0d59cfd03c2fd609c3ee2deac
 </code></pre>
 </div>
 
@@ -254,6 +268,7 @@ Reading time ~1 minute
 
 <h5 id="section-6">有时候遇到一行文字超出宽度后，后面部分用省略号的需求</h5>
 
+<<<<<<< HEAD
 <div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nc">.title</span><span class="p">{</span>
 	<span class="nl">font-size</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
 	<span class="nl">color</span><span class="p">:</span> <span class="m">#8a8a8a</span><span class="p">;</span>
@@ -263,6 +278,17 @@ Reading time ~1 minute
 	<span class="nl">-o-text-overflow</span><span class="p">:</span> <span class="n">ellipsis</span><span class="p">;</span> 
 	<span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
 <span class="p">}</span>
+=======
+<div class="language-css highlighter-rouge"><pre class="highlight"><code>    <span class="nc">.title</span><span class="p">{</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="m">#8a8a8a</span><span class="p">;</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">16em</span><span class="p">;</span>
+        <span class="nl">white-space</span><span class="p">:</span> <span class="nb">nowrap</span><span class="p">;</span> 
+        <span class="nl">text-overflow</span><span class="p">:</span> <span class="n">ellipsis</span><span class="p">;</span> 
+        <span class="nl">-o-text-overflow</span><span class="p">:</span> <span class="n">ellipsis</span><span class="p">;</span> 
+        <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+    <span class="p">}</span>
+>>>>>>> aea9351178fb45b0d59cfd03c2fd609c3ee2deac
 
 </code></pre>
 </div>
