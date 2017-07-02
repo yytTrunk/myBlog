@@ -1,0 +1,244 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>javaScript数值计算系列 &#8211; Yyt&&Dandan Blog</title>
+<meta name="description" content="对数值的操作，有遗漏以后再补充">
+<meta name="keywords" content="Web前端总结">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javaScript数值计算系列">
+<meta property="og:description" content="对数值的操作，有遗漏以后再补充">
+<meta property="og:url" content="/mathnumber/">
+<meta property="og:site_name" content="Yyt&&Dandan Blog">
+
+
+
+
+
+<link rel="canonical" href="/mathnumber/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yyt&&Dandan Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+<style type="text/css">body {background-image:url(/images/index-bg.jpg);}</style>
+
+
+</head>
+
+<body id="post"  style="position: relative">
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">Open Menu</button>
+	<ul class="dl-menu">
+		<li><a href="/">首页</a></li>
+		<li>
+			<a href="#">关于我</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="/images/my.jpg" alt="Yyt photo" class="author-photo">
+					<h4>Yyt</h4>
+					<p>了解自己</p>
+				</li>
+				<li><a href="/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				<li>
+					<a href="mailto:summerdha@163.com"><i class="fa fa-fw fa-envelope"></i> Email</a>
+				</li>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		</li>
+		<li>
+			<a href="#">分类</a>
+			<ul class="dl-submenu">
+				<li><a href="/posts/">所有文章</a></li>
+				<li><a href="/tags/">所有标签</a></li>
+			</ul>
+		</li>
+		
+	    
+	    <li><a href="/theme-setup/" >Theme Setup</a></li>
+	  
+	    
+	    <li><a href="http://mademistakes.com" target="_blank">External Link</a></li>
+	  
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        
+          <h1 class="entry-title"><a href="/mathnumber/" rel="bookmark" title="javaScript数值计算系列">javaScript数值计算系列</a></h1>
+        
+        <h2><span class="entry-date date published"><time datetime="2017-06-28T00:00:00+00:00">June 28, 2017</time></span></h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+Reading time ~1 minute
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <h1 id="section">数值计算</h1>
+
+<blockquote>
+  <ol>
+    <li>四舍五入保留2位小数</li>
+  </ol>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">26</span><span class="p">;</span>
+<span class="c1">//JS保留2位小数：</span>
+<span class="c1">//toFixed(num),num为几，就四舍五入保留几位小数</span>
+<span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="o">/</span><span class="nx">b</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="c1">//Math.rund(),四舍五入保留整数</span>
+
+</code></pre>
+</div>
+
+<hr />
+<blockquote>
+  <p>2.对随机数列进行排序
+1. 对1–100之间的随机整数进行升序排列
+- Math.random()是令系统随机选取大于等于 0.0 且小于 1.0 的随机 double 值</p>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+<span class="c1">//取1--100之间的10个随机整数进行排序</span>
+<span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span><span class="c1">//Math.floor取小于这个数的最大整数</span>
+<span class="kd">var</span> <span class="nx">numArr</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">numArr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">//sort()可对随机数进行从小到大排序,返回值为排序后的数组</span>
+<span class="nx">numArr</span><span class="p">.</span><span class="nx">sort</span><span class="p">();</span>
+</code></pre>
+</div>
+
+<ol>
+  <li>对1–100之间的随机整数进行降序排列</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+<span class="kd">function</span> <span class="nx">paixu</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span><span class="nx">n</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nx">m</span><span class="o">-</span><span class="nx">n</span><span class="p">;</span><span class="c1">//m-n为升序，n-m为降序排序</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">numArr</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">numArr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">numArr</span><span class="p">.</span><span class="nx">sort</span><span class="p">(</span><span class="nx">paixu</span><span class="p">);</span>
+
+</code></pre>
+</div>
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags/#Web前端总结" title="Pages tagged Web前端总结" class="tag"><span class="term">Web前端总结</span></a></span>
+        
+        <div class="social-share">
+  <ul class="socialcount socialcount-small inline-list">
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=/mathnumber/" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=/mathnumber/" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=/mathnumber/" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+  </ul>
+</div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    <div class="read-more">
+  
+    <div class="read-more-header">
+      <a href="/inputAutoCct/" class="read-more-btn">Read More</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="/mobileModal/" title="Mobilemodal">Mobilemodal</a></h3>
+      <p># 基于jQuery 移动端模态框---实现效果：[移动端效果展示](www.ttsummer.top/demo/modal/modal.html)&hellip; <a href="/mobileModal/">Continue reading</a></p>
+    </div><!-- /.read-more-content -->
+  
+  <div class="read-more-list">
+    
+      <div class="list-item">
+        <h4><a href="/inputAutoCct/" title="input框在移动端实时监听">input框在移动端实时监听</a></h4>
+        <span>Published on June 28, 2017</span>
+      </div><!-- /.list-item -->
+    
+      <div class="list-item">
+        <h4><a href="/css/" title="css中常用知识点总结">css中常用知识点总结</a></h4>
+        <span>Published on March 20, 2017</span>
+      </div><!-- /.list-item -->
+    
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2017 Yyt</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+
+
+
+	        
+
+</body>
+</html>

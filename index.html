@@ -131,6 +131,132 @@
   <header>
     
     <div class="entry-meta">
+      <span class="entry-date date published updated"><time datetime="2017-07-01T00:00:00+00:00"><a href="/mobileModal/">July 01, 2017</a></time></span><span class="author vcard"><span class="fn"><a href="/about/" title="About Yyt">Yyt</a></span></span>
+      
+      <span class="entry-reading-time">
+        <i class="fa fa-clock-o"></i>
+        
+Reading time ~1 minute
+      </span><!-- /.entry-reading-time -->
+      
+    </div><!-- /.entry-meta -->
+    
+      <h1 class="entry-title"><a href="/mobileModal/" rel="bookmark" title="Mobilemodal" itemprop="url">Mobilemodal</a></h1>
+    
+  </header>
+  <div class="entry-content">
+    <h1 id="jquery-">基于jQuery 移动端模态框</h1>
+
+<hr />
+<p>实现效果：
+<a href="www.ttsummer.top/demo/modal/modal.html">移动端效果展示</a></p>
+
+  </div><!-- /.entry-content -->
+</article><!-- /.hentry -->
+
+<article class="hentry">
+  <header>
+    
+    <div class="entry-meta">
+      <span class="entry-date date published updated"><time datetime="2017-06-28T00:00:00+00:00"><a href="/mathnumber/">June 28, 2017</a></time></span><span class="author vcard"><span class="fn"><a href="/about/" title="About Yyt">Yyt</a></span></span>
+      
+      <span class="entry-reading-time">
+        <i class="fa fa-clock-o"></i>
+        
+Reading time ~1 minute
+      </span><!-- /.entry-reading-time -->
+      
+    </div><!-- /.entry-meta -->
+    
+      <h1 class="entry-title"><a href="/mathnumber/" rel="bookmark" title="javaScript数值计算系列" itemprop="url">javaScript数值计算系列</a></h1>
+    
+  </header>
+  <div class="entry-content">
+    <h1 id="section">数值计算</h1>
+
+<blockquote>
+  <ol>
+    <li>四舍五入保留2位小数</li>
+  </ol>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">26</span><span class="p">;</span>
+<span class="c1">//JS保留2位小数：</span>
+<span class="c1">//toFixed(num),num为几，就四舍五入保留几位小数</span>
+<span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="o">/</span><span class="nx">b</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="c1">//Math.rund(),四舍五入保留整数</span>
+
+</code></pre>
+</div>
+
+<hr />
+<blockquote>
+  <p>2.对随机数列进行排序
+1. 对1–100之间的随机整数进行升序排列
+- Math.random()是令系统随机选取大于等于 0.0 且小于 1.0 的随机 double 值</p>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+<span class="c1">//取1--100之间的10个随机整数进行排序</span>
+<span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span><span class="c1">//Math.floor取小于这个数的最大整数</span>
+<span class="kd">var</span> <span class="nx">numArr</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">numArr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">//sort()可对随机数进行从小到大排序,返回值为排序后的数组</span>
+<span class="nx">numArr</span><span class="p">.</span><span class="nx">sort</span><span class="p">();</span>
+</code></pre>
+</div>
+
+<ol>
+  <li>对1–100之间的随机整数进行降序排列</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+<span class="kd">function</span> <span class="nx">paixu</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span><span class="nx">n</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nx">m</span><span class="o">-</span><span class="nx">n</span><span class="p">;</span><span class="c1">//m-n为升序，n-m为降序排序</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">numArr</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">numArr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">numArr</span><span class="p">.</span><span class="nx">sort</span><span class="p">(</span><span class="nx">paixu</span><span class="p">);</span>
+
+</code></pre>
+</div>
+
+  </div><!-- /.entry-content -->
+</article><!-- /.hentry -->
+
+<article class="hentry">
+  <header>
+    
+    <div class="entry-meta">
+      <span class="entry-date date published updated"><time datetime="2017-06-28T00:00:00+00:00"><a href="/inputAutoCct/">June 28, 2017</a></time></span><span class="author vcard"><span class="fn"><a href="/about/" title="About Yyt">Yyt</a></span></span>
+      
+      <span class="entry-reading-time">
+        <i class="fa fa-clock-o"></i>
+        
+Reading time ~1 minute
+      </span><!-- /.entry-reading-time -->
+      
+    </div><!-- /.entry-meta -->
+    
+      <h1 class="entry-title"><a href="/inputAutoCct/" rel="bookmark" title="input框在移动端实时监听" itemprop="url">input框在移动端实时监听</a></h1>
+    
+  </header>
+  <div class="entry-content">
+    
+
+  </div><!-- /.entry-content -->
+</article><!-- /.hentry -->
+
+<article class="hentry">
+  <header>
+    
+    <div class="entry-meta">
       <span class="entry-date date published updated"><time datetime="2017-03-20T00:00:00+00:00"><a href="/css/">March 20, 2017</a></time></span><span class="author vcard"><span class="fn"><a href="/about/" title="About Yyt">Yyt</a></span></span>
       
       <span class="entry-reading-time">
@@ -236,7 +362,6 @@ Reading time ~1 minute
 <h5 id="divfloatdiv">当所有子div用float的时候，父div的高度撑不起来。这样会造成布局的混乱。</h5>
 
 <h5 id="divclearclear">在父级div加个clear类，给clear写样式，消除浮动</h5>
-<<<<<<< HEAD
 <div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="c">/*用after方法来消除浮动*/</span>
 <span class="nc">.clear</span><span class="p">{</span><span class="py">zoom</span><span class="p">:</span><span class="m">1</span><span class="p">;</span>
 <span class="p">}</span>
@@ -248,19 +373,6 @@ Reading time ~1 minute
 	<span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
 	<span class="nl">visibility</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;</span>
 <span class="p">}</span>
-=======
-<div class="language-css highlighter-rouge"><pre class="highlight"><code>	<span class="c">/*用after方法来消除浮动*/</span>
-	<span class="nc">.clear</span><span class="p">{</span><span class="py">zoom</span><span class="p">:</span><span class="m">1</span><span class="p">;</span>
-	<span class="p">}</span>
-	<span class="nc">.clear</span><span class="nd">:after</span><span class="p">{</span>
-		<span class="nl">clear</span><span class="p">:</span><span class="nb">both</span><span class="p">;</span>
-		<span class="nl">content</span><span class="p">:</span><span class="s2">'.'</span><span class="p">;</span>
-		<span class="nl">display</span><span class="p">:</span><span class="nb">block</span><span class="p">;</span>
-		<span class="nl">width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-		<span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-		<span class="nl">visibility</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;</span>
-	<span class="p">}</span>
->>>>>>> aea9351178fb45b0d59cfd03c2fd609c3ee2deac
 </code></pre>
 </div>
 
@@ -268,7 +380,6 @@ Reading time ~1 minute
 
 <h5 id="section-6">有时候遇到一行文字超出宽度后，后面部分用省略号的需求</h5>
 
-<<<<<<< HEAD
 <div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nc">.title</span><span class="p">{</span>
 	<span class="nl">font-size</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
 	<span class="nl">color</span><span class="p">:</span> <span class="m">#8a8a8a</span><span class="p">;</span>
@@ -278,17 +389,6 @@ Reading time ~1 minute
 	<span class="nl">-o-text-overflow</span><span class="p">:</span> <span class="n">ellipsis</span><span class="p">;</span> 
 	<span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
 <span class="p">}</span>
-=======
-<div class="language-css highlighter-rouge"><pre class="highlight"><code>    <span class="nc">.title</span><span class="p">{</span>
-        <span class="nl">font-size</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
-        <span class="nl">color</span><span class="p">:</span> <span class="m">#8a8a8a</span><span class="p">;</span>
-        <span class="nl">width</span><span class="p">:</span> <span class="m">16em</span><span class="p">;</span>
-        <span class="nl">white-space</span><span class="p">:</span> <span class="nb">nowrap</span><span class="p">;</span> 
-        <span class="nl">text-overflow</span><span class="p">:</span> <span class="n">ellipsis</span><span class="p">;</span> 
-        <span class="nl">-o-text-overflow</span><span class="p">:</span> <span class="n">ellipsis</span><span class="p">;</span> 
-        <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
-    <span class="p">}</span>
->>>>>>> aea9351178fb45b0d59cfd03c2fd609c3ee2deac
 
 </code></pre>
 </div>
@@ -485,7 +585,7 @@ Reading time ~1 minute
       <div class="classification-title">分类</div>
       
       
-        <li><a href="/tags/" class="tag"><span class="term">Web前端总结</span> <span class="count">(2)</span></a></li>
+        <li><a href="/tags/" class="tag"><span class="term">Web前端总结</span> <span class="count">(4)</span></a></li>
       
   </div>
   <div class="clear"></div>
