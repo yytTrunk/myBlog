@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>input框在移动端实时监听 &#8211; Yyt&&Dandan Blog</title>
-<meta name="description" content="四舍五入，保留小数">
+<meta name="description" content="实时监听输入框（移动端）">
 <meta name="keywords" content="Web前端总结">
 
 
@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="input框在移动端实时监听">
-<meta property="og:description" content="四舍五入，保留小数">
+<meta property="og:description" content="实时监听输入框（移动端）">
 <meta property="og:url" content="/inputAutoCct/">
 <meta property="og:site_name" content="Yyt&&Dandan Blog">
 
@@ -131,7 +131,104 @@ Reading time ~1 minute
       </div><!-- /.header-title-wrap -->
     </header>
     <div class="entry-content">
-      
+      <h1 id="section">实时监听输入框（移动端）</h1>
+
+<p>事实监听输入框，来实现输入实时计算</p>
+
+<ol>
+  <li>首先来实现如何调用oninput
+    <ul>
+      <li>在html实现调用
+&gt; html部分</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>在文本框中输入数字触发函数。<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">id=</span><span class="s">"myInput1"</span> <span class="na">oninput=</span><span class="s">"myFunction()"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"result"</span><span class="nt">&gt;&lt;/p&gt;</span>
+
+</code></pre>
+</div>
+<blockquote>
+  <p>javascript部分</p>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+<span class="kd">function</span> <span class="nx">myFunction</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">iptvalue</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"myInput1"</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+        <span class="nx">iptvalue</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">iptvalue</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"result"</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">"你输入的值是: "</span> <span class="o">+</span> <span class="nx">iptvalue</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<ul>
+  <li>在javaScript中实现调用</li>
+  <li>调用方式：object.oninput
+&gt; html部分</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>在文本框中输入数字触发函数。<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">id=</span><span class="s">"myInput1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"result"</span><span class="nt">&gt;&lt;/p&gt;</span>
+
+</code></pre>
+</div>
+<blockquote>
+  <p>javascript部分</p>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"myInput1"</span><span class="p">).</span><span class="nx">oninput</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">iptvalue</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"myInput1"</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"result"</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">"你输入的值是: "</span> <span class="o">+</span> <span class="nx">iptvalue</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p>2、实现实时计算，输入框输入的值相加
+==当输入框的值发生改变时，遍历每个相关输入框==</p>
+
+<blockquote>
+  <p>html部分</p>
+</blockquote>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>在文本框中输入数字触发函数。<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">id=</span><span class="s">"myInput1"</span> <span class="na">oninput=</span><span class="s">"myFunction()"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">id=</span><span class="s">"myInput2"</span> <span class="na">oninput=</span><span class="s">"myFunction()"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">id=</span><span class="s">"myInput3"</span> <span class="na">oninput=</span><span class="s">"myFunction()"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">id=</span><span class="s">"myInput4"</span> <span class="na">oninput=</span><span class="s">"myFunction()"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">id=</span><span class="s">"myInput5"</span> <span class="na">oninput=</span><span class="s">"myFunction()"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"result"</span><span class="nt">&gt;&lt;/p&gt;</span>
+
+</code></pre>
+</div>
+<blockquote>
+  <p>javaScript部分</p>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+<span class="kd">function</span> <span class="nx">myFunction</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;=</span><span class="mi">5</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">iptvalue</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"myInput"</span><span class="o">+</span><span class="nx">i</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">iptvalue</span> <span class="o">===</span> <span class="s2">""</span><span class="p">){</span>
+            <span class="nx">iptvalue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">iptvalue</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">iptvalue</span><span class="p">);</span>
+        <span class="nx">result</span> <span class="o">+=</span> <span class="nx">iptvalue</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"result"</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">"输入框相加的值是: "</span> <span class="o">+</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+<hr />
+<p>在线演示：<a href="../demo/oninput/oninput.html">实时计算5个输入框的数值和</a></p>
 
       <footer class="entry-meta">
         <span class="entry-tags"><a href="/tags/#Web前端总结" title="Pages tagged Web前端总结" class="tag"><span class="term">Web前端总结</span></a></span>
@@ -152,8 +249,8 @@ Reading time ~1 minute
       <a href="/css/" class="read-more-btn">Read More</a>
     </div><!-- /.read-more-header -->
     <div class="read-more-content">
-      <h3><a href="/mobileModal/" title="Mobilemodal">Mobilemodal</a></h3>
-      <p># 基于jQuery 移动端模态框---实现效果：[移动端效果展示](../demo/modal/modal.html)&hellip; <a href="/mobileModal/">Continue reading</a></p>
+      <h3><a href="/mobileModal/" title="基于jQuery 移动端模态框">基于jQuery 移动端模态框</a></h3>
+      <p>基于jQuery 移动端模态框，防止点击穿透 <a href="/mobileModal/">Continue reading</a></p>
     </div><!-- /.read-more-content -->
   
   <div class="read-more-list">

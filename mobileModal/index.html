@@ -1,5 +1,253 @@
-<h1 id="jquery-">基于jQuery 移动端模态框</h1>
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>基于jQuery 移动端模态框 &#8211; Yyt&&Dandan Blog</title>
+<meta name="description" content="基于jQuery 移动端模态框，防止点击穿透">
+<meta name="keywords" content="Web前端总结">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于jQuery 移动端模态框">
+<meta property="og:description" content="基于jQuery 移动端模态框，防止点击穿透">
+<meta property="og:url" content="/mobileModal/">
+<meta property="og:site_name" content="Yyt&&Dandan Blog">
+
+
+
+
+
+<link rel="canonical" href="/mobileModal/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yyt&&Dandan Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+<style type="text/css">body {background-image:url(/images/index-bg.jpg);}</style>
+
+
+</head>
+
+<body id="post"  style="position: relative">
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">Open Menu</button>
+	<ul class="dl-menu">
+		<li><a href="/">首页</a></li>
+		<li>
+			<a href="#">关于我</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="/images/my.jpg" alt="Yyt photo" class="author-photo">
+					<h4>Yyt</h4>
+					<p>了解自己</p>
+				</li>
+				<li><a href="/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				<li>
+					<a href="mailto:summerdha@163.com"><i class="fa fa-fw fa-envelope"></i> Email</a>
+				</li>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		</li>
+		<li>
+			<a href="#">分类</a>
+			<ul class="dl-submenu">
+				<li><a href="/posts/">所有文章</a></li>
+				<li><a href="/tags/">所有标签</a></li>
+			</ul>
+		</li>
+		
+	    
+	    <li><a href="/theme-setup/" >Theme Setup</a></li>
+	  
+	    
+	    <li><a href="http://mademistakes.com" target="_blank">External Link</a></li>
+	  
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        
+          <h1 class="entry-title"><a href="/mobileModal/" rel="bookmark" title="基于jQuery 移动端模态框">基于jQuery 移动端模态框</a></h1>
+        
+        <h2><span class="entry-date date published"><time datetime="2017-07-01T00:00:00+00:00">July 01, 2017</time></span></h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+Reading time ~1 minute
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <h1 id="jquery-">基于jQuery 移动端模态框，防止点击穿透</h1>
+
+<p>之前做移动端的项目，一直被模态框的问题困扰了很久，当模态框高度超过浏览器窗口时，滑动模态框，模态框底部html内容也开始滑动，影响用户体验，之后当模态框弹出的时候，给html加了一个height：100%，解决了这个问题。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+<span class="kd">var</span> <span class="nx">modal</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">open</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opt</span><span class="p">,</span><span class="nx">noForbidden</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">lock</span> <span class="o">=</span> <span class="s1">'.lock_overlay'</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nx">opt</span><span class="p">.</span><span class="nx">modal</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">'&lt;div class="lock_overlay"&gt;&lt;/div&gt;'</span><span class="p">);</span>  <span class="c1">//给模态框外层套上一个div</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nx">lock</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s1">'display'</span><span class="p">:</span><span class="s1">'block'</span><span class="p">});</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nx">opt</span><span class="p">.</span><span class="nx">modal</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s1">'display'</span><span class="p">:</span><span class="s1">'block'</span><span class="p">});</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nx">opt</span><span class="p">.</span><span class="nx">modal</span><span class="p">).</span><span class="nx">fadeIn</span><span class="p">();</span>  
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'html,body'</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">'modal'</span><span class="p">);</span>  <span class="c1">//给html和body加上modal，单独给modal写样式</span>
+    <span class="p">},</span>
+    <span class="na">close</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opt</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">lock</span> <span class="o">=</span> <span class="s1">'.lock_overlay'</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nx">lock</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s1">'display'</span><span class="p">:</span><span class="s1">'none'</span><span class="p">});</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nx">opt</span><span class="p">.</span><span class="nx">modal</span><span class="p">).</span><span class="nx">unwrap</span><span class="p">(</span><span class="s1">'&lt;div class="lock_overlay"&gt;&lt;/div&gt;'</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nx">opt</span><span class="p">.</span><span class="nx">modal</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s1">'display'</span><span class="p">:</span><span class="s1">'none'</span><span class="p">});</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'html,body'</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">'modal'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span> 
+
+</code></pre>
+</div>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nt">html</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">750px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">body</span> <span class="p">{</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="no">lightblue</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.modal</span> <span class="p">{</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hide</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.lock_overlay</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
+    <span class="nl">top</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">left</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">right</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">z-index</span><span class="p">:</span> <span class="m">1001</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.2</span><span class="p">);</span>
+    <span class="nl">overflow-y</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">overflow-x</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
 
 <hr />
 <p>实现效果：
 <a href="../demo/modal/modal.html">移动端效果展示</a></p>
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags/#Web前端总结" title="Pages tagged Web前端总结" class="tag"><span class="term">Web前端总结</span></a></span>
+        
+        <div class="social-share">
+  <ul class="socialcount socialcount-small inline-list">
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=/mobileModal/" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=/mobileModal/" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=/mobileModal/" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+  </ul>
+</div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    <div class="read-more">
+  
+    <div class="read-more-header">
+      <a href="/mathnumber/" class="read-more-btn">Read More</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="/mathnumber/" title="javaScript数值计算系列">javaScript数值计算系列</a></h3>
+      <p>对数值的操作，有遗漏以后再补充 <a href="/mathnumber/">Continue reading</a></p>
+    </div><!-- /.read-more-content -->
+  
+  <div class="read-more-list">
+    
+      <div class="list-item">
+        <h4><a href="/inputAutoCct/" title="input框在移动端实时监听">input框在移动端实时监听</a></h4>
+        <span>Published on June 28, 2017</span>
+      </div><!-- /.list-item -->
+    
+      <div class="list-item">
+        <h4><a href="/css/" title="css中常用知识点总结">css中常用知识点总结</a></h4>
+        <span>Published on March 20, 2017</span>
+      </div><!-- /.list-item -->
+    
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2017 Yyt</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+
+
+
+	        
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>实施监听输入框</title>
+		<script src="../viewport.js"></script>
+		<style type="text/css">
+			input[id^="myInput"]{
+				display: block;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<p>在文本框中输入数字触发函数。</p>
+		<input type="number" id="myInput1" oninput="myFunction()">
+		<input type="number" id="myInput2" oninput="myFunction()">
+		<input type="number" id="myInput3" oninput="myFunction()">
+		<input type="number" id="myInput4" oninput="myFunction()">
+		<input type="number" id="myInput5" oninput="myFunction()">
+		<p id="result"></p>
+		<!--<script>
+		在javascript中调用oninput函数，object.oninput
+		document.getElementById("myInput1").oninput = function(){
+			var iptvalue = document.getElementById("myInput"+i).value;
+			document.getElementById("result").innerHTML = "输入框相加的值是: " + iptvalue;
+		}
+		</script>-->
+		<script>
+			function myFunction() {
+				var result = 0;
+				for (var i=1;i<=5;i++){
+					var iptvalue = document.getElementById("myInput"+i).value;
+					if(iptvalue === ""){
+						iptvalue = 0;
+					}
+					iptvalue = parseFloat(iptvalue);
+					result += iptvalue;
+				}
+				document.getElementById("result").innerHTML = "输入框相加的值是: " + result;
+			}
+		</script>
+	</body>
+
+</html>
