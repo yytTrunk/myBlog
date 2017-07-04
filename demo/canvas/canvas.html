@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!--<canvas id="myCanvas" width="400" height="200">
+		  您的浏览器不支持canvas！
+		</canvas>-->
+		<canvas id="canvas"></canvas>
+		<canvas id="canvas2"></canvas>
+		<img id="preview" src="">
+		<img id="source" src="" style="display: none;">
+		<script type="text/javascript">
+			//		1、将图片渲染到canvas上
+			//			var img = new Image();
+			//			img.onload = function(){
+			//				var canvas = document.getElementById('myCanvas');
+			//				canvas.width = img.width*0.1;
+			//				canvas.height = img.height*0.1;
+			//				var ctx = canvas.getContext('2d');
+			//				ctx.scale(0.1,0.1);
+			//				ctx.drawImage(img, 0, 0); // 设置对应的图像对象，以及它在画布上的位置// 插入页面底部
+			//				ctx.toDataURL('image/png');
+			//				console.log(canvas.getContext('2d').scale(0.5,0.5));
+			//				return ctx;
+			//			}
+			//			img.src = 'my.jpg';
+
+			//		2、画路径
+			//			var canvas = document.getElementById('myCanvas');
+			//			var ctx = canvas.getContext('2d');
+			//
+			//			function starPath(x0, y0, x1, y1) {
+			//				ctx.beginPath();
+			//				ctx.moveTo(x0, y0);
+			//				ctx.lineTo(x1, y1);
+			//				ctx.lineJoin = "miter"; //设置连接样式:miter(默认),bevel,round
+			//				ctx.strokeStyle = '#CC0000'; // 设置线的颜色
+			//				ctx.stroke(); // 进行线的着色，这时整条线才变得可见
+			//			}
+			//			starPath(0, 0, 200, 0);
+			//			starPath(0, 0, 200, 200);
+			//			starPath(200, 0, 200, 200);
+
+			//		3、图片压缩
+			var canvas = document.getElementById('canvas');
+			var source = document.getElementById('source');
+			var preview = document.getElementById('preview');
+			var canvas2 = document.getElementById('canvas2');
+
+			source.onload = function() {
+				var width = source.width;
+				var height = source.height;
+				var context = canvas.getContext('2d');
+				// draw image params
+				var sx = 0;
+				var sy = 0;
+				var sWidth = width;
+				var sHeight = height;
+				var dx = 0;
+				var dy = 0;
+				var dWidth = width;
+				var dHeight = height;
+				var quality = 0.1;
+
+				canvas.width = width;
+				canvas.height = height;
+
+				context.drawImage(source, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+
+				var dataUrl = canvas.toDataURL('image/jpeg', quality);
+				preview.src = dataUrl;
+				
+			};
+			preview.onload = function(){var width = source.width;
+				var height = source.height;
+				var context2 = canvas2.getContext('2d');
+				var quality = 0.1;
+				var dx = 0;
+				var dy = 0;
+				var dWidth = width;
+				var dHeight = height;
+				canvas2.width = width;
+				canvas2.height = height;
+				context2.drawImage(preview, dx, dy, dWidth, dHeight);
+			}
+			source.src = 'my.jpg';
+		</script>
+	</body>
+
+</html>

@@ -131,6 +131,78 @@
   <header>
     
     <div class="entry-meta">
+      <span class="entry-date date published updated"><time datetime="2017-07-04T00:00:00+00:00"><a href="/picCompress/">July 04, 2017</a></time></span><span class="author vcard"><span class="fn"><a href="/about/" title="About Yyt">Yyt</a></span></span>
+      
+      <span class="entry-reading-time">
+        <i class="fa fa-clock-o"></i>
+        
+Reading time ~1 minute
+      </span><!-- /.entry-reading-time -->
+      
+    </div><!-- /.entry-meta -->
+    
+      <h1 class="entry-title"><a href="/picCompress/" rel="bookmark" title="canvas实现图片压缩" itemprop="url">canvas实现图片压缩</a></h1>
+    
+  </header>
+  <div class="entry-content">
+    <h1 id="canvas">canvas实现图片压缩</h1>
+
+<p>实现该功能使用的方法
+1. drawImage();
+2. toDataURL();</p>
+
+<hr />
+<blockquote>
+  <p>html部分</p>
+</blockquote>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"source-img"</span><span class="nt">&gt;</span>  //原图容器
+    原图：<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">id=</span><span class="s">"source-img"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"preview-img"</span><span class="nt">&gt;</span>  //预览图容器
+    压缩后预览图：(点击预览图来对比原图)<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">id=</span><span class="s">"preview-img"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">"source-canvas"</span> <span class="na">class=</span><span class="s">"hide"</span><span class="nt">&gt;</span>       //原图画布
+<span class="nt">&lt;/canvas&gt;</span>
+</code></pre>
+</div>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"source-img"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">preview</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"preview-img"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">sou_can</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"source-canvas"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">pre_can</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"preview-canvas"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">pre_btn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"preview"</span><span class="p">);</span>
+<span class="nx">pre_btn</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">sx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>         <span class="c1">//画布起始点横坐标</span>
+    <span class="kd">var</span> <span class="nx">sy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>         <span class="c1">//画布起始点纵坐标</span>
+    <span class="kd">var</span> <span class="nx">width</span> <span class="o">=</span> <span class="nx">source</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">height</span> <span class="o">=</span> <span class="nx">source</span><span class="p">.</span><span class="nx">height</span><span class="p">;</span>
+    <span class="nx">sou_can</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">width</span><span class="p">;</span>
+    <span class="nx">sou_can</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">height</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">sou_context</span> <span class="o">=</span> <span class="nx">sou_can</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s1">'2d'</span><span class="p">);</span>
+    <span class="nx">sou_context</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="nx">sx</span><span class="p">,</span><span class="nx">sy</span><span class="p">,</span><span class="nx">width</span><span class="p">,</span><span class="nx">height</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">dataurl</span> <span class="o">=</span> <span class="nx">sou_can</span><span class="p">.</span><span class="nx">toDataURL</span><span class="p">(</span><span class="s1">'image/jpeg'</span><span class="p">,</span><span class="nx">quality</span><span class="p">);</span>  
+    <span class="nx">preview</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">dataurl</span><span class="p">;</span>
+    <span class="nx">preview</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">width</span><span class="o">*</span><span class="nx">quality</span><span class="p">;</span>
+    <span class="nx">preview</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">height</span><span class="o">*</span><span class="nx">quality</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">source</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'1.jpeg'</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>在线演示：
+<a href="../demo/canvas/picCompress.html">按比例压缩图片</a></p>
+
+  </div><!-- /.entry-content -->
+</article><!-- /.hentry -->
+
+<article class="hentry">
+  <header>
+    
+    <div class="entry-meta">
       <span class="entry-date date published updated"><time datetime="2017-07-01T00:00:00+00:00"><a href="/mobileModal/">July 01, 2017</a></time></span><span class="author vcard"><span class="fn"><a href="/about/" title="About Yyt">Yyt</a></span></span>
       
       <span class="entry-reading-time">
@@ -551,196 +623,47 @@ Reading time ~1 minute
   </div><!-- /.entry-content -->
 </article><!-- /.hentry -->
 
-<article class="hentry">
-  <header>
+
+
+<div class="pagination">
+  <ul class="inline-list">
     
-    <div class="entry-meta">
-      <span class="entry-date date published updated"><time datetime="2017-03-13T00:00:00+00:00"><a href="/background-image/">March 13, 2017</a></time></span><span class="author vcard"><span class="fn"><a href="/about/" title="About Yyt">Yyt</a></span></span>
-      
-      <span class="entry-reading-time">
-        <i class="fa fa-clock-o"></i>
-        
-Reading time ~1 minute
-      </span><!-- /.entry-reading-time -->
-      
-    </div><!-- /.entry-meta -->
     
-      <h1 class="entry-title"><a href="/background-image/" rel="bookmark" title="Html的模板使用" itemprop="url">Html的模板使用</a></h1>
+
     
-  </header>
-  <div class="entry-content">
-    <h2 id="html">在请求数据时，重复性的内容可以通过模板添加到html中，大大减少了代码量</h2>
+    
+      <li><strong class="current-page">1</strong></li>
+    
 
-<h4 id="stringobjreplacestringobjstringobj">实现原理：一个stringObj使用replace替换stringObj中需要变化的量，将这个stringObj插入到想要的地方</h4>
+    
+    
 
-<h4 id="html-1">1、构建HTML</h4>
-<div class="language-html highlighter-rouge"><pre class="highlight"><code>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-	<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"jQuery-1.11.3.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"index.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-	<span class="nt">&lt;title&gt;</span>使用模板<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-	
-	<span class="nt">&lt;/div&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/template"</span> <span class="na">id=</span><span class="s">"test"</span><span class="nt">&gt;</span>
-		<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"test1"</span><span class="o">&gt;</span>
-			<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span> <span class="p">{</span><span class="nx">$name</span><span class="p">}</span> <span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
-</span>		<span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
-</span>	<span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+    
+    
+    
 
-</code></pre>
+    
+
+    
+    
+
+    
+      <li><a href="/page2/">2</a></li>
+    
+
+    
+    
+      <li><a href="/page2/" class="btn">Next</a></li>
+    
+  </ul>
 </div>
-
-<h4 id="stringobj">2、将模板打印成stringObj：</h4>
-
-<h4 id="var-test--testtext-------aaa">var test = $(‘#test’).text();       //是一个字符串对象，替换该对象中的{$aaa}</h4>
-
-<h4 id="datajson">请求数据，为了测试我请求了本地data.json</h4>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-	<span class="s2">"type"</span><span class="p">:</span><span class="s2">"get"</span><span class="p">,</span>
-	<span class="s2">"url"</span><span class="p">:</span><span class="s2">"data.json"</span><span class="p">,</span>
-	<span class="s2">"success"</span><span class="p">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>                                           <span class="c1">//定义一个函数，返回数组</span>
-				<span class="k">return</span><span class="p">{</span>
-				<span class="na">aaa</span><span class="p">:</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span>
-				<span class="p">}</span>
-			<span class="p">}</span>
-			<span class="nx">varnm</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
-	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-	<span class="nx">vartest</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="s1">'#test'</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>                                   <span class="c1">//将模板打印成stringObj</span>
-		<span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span><span class="nx">item</span><span class="p">){</span>       <span class="c1">//遍历data，获取data中的name值</span>
-		<span class="nx">$</span><span class="p">.</span><span class="nx">tpl</span><span class="p">(</span><span class="nx">test</span><span class="p">,</span><span class="nx">nm</span><span class="p">(</span><span class="nx">item</span><span class="p">)).</span><span class="nx">appendTo</span><span class="p">(</span><span class="s1">'.content'</span><span class="p">);</span>         <span class="c1">//调用tpl函数，将模板中的{$name}替换为数组data中的名字，并插入到content这个class里</span>
-	<span class="p">})</span>
-	<span class="p">}</span>
-<span class="p">})</span>
-</code></pre>
-</div>
-
-<h4 id="json">本地Json中的内容：</h4>
-
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">[</span>
-	<span class="pi">{</span>
-	<span class="s2">"</span><span class="s">name"</span><span class="pi">:</span><span class="s2">"</span><span class="s">张三"</span>
-	<span class="pi">},</span>
-	<span class="pi">{</span>
-	<span class="s2">"</span><span class="s">name"</span><span class="pi">:</span><span class="s2">"</span><span class="s">李四"</span>
-	<span class="pi">},</span>
-	<span class="pi">{</span>
-	<span class="s2">"</span><span class="s">name"</span><span class="pi">:</span><span class="s2">"</span><span class="s">王五"</span>
-	<span class="pi">},</span>
-	<span class="pi">{</span>
-	<span class="s2">"</span><span class="s">name"</span><span class="pi">:</span><span class="s2">"</span><span class="s">周六"</span>
-	<span class="pi">},</span>
-	<span class="pi">{</span>
-	<span class="s2">"</span><span class="s">name"</span><span class="pi">:</span><span class="s2">"</span><span class="s">三七"</span>
-	<span class="pi">}</span>
-<span class="pi">]</span>
-
-</code></pre>
-</div>
-
-<h4 id="javascript">3、在JavaScript中自定义一个模板函数</h4>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">tpl</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">template</span><span class="p">,</span><span class="nx">params</span><span class="p">,</span><span class="nx">pureHtml</span><span class="p">,</span><span class="nx">escape</span><span class="p">){</span>       <span class="c1">//param使用nm()函数返回一个数组</span>
-	<span class="kd">var</span> <span class="nx">rtn</span> <span class="o">=</span> <span class="nx">template</span><span class="p">.</span><span class="nx">repalace</span><span class="p">(</span><span class="sr">/</span><span class="se">\{\$(</span><span class="sr">.+</span><span class="se">?)\}</span><span class="sr">/gi</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">total</span><span class="p">,</span><span class="nx">param</span><span class="p">){</span>   <span class="c1">//total取得是要替换整个的字符串，param取的是{$ }内部字符串</span>
-		<span class="k">return</span> <span class="p">(</span><span class="nx">params</span><span class="p">[</span><span class="nx">param</span><span class="p">]</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="p">)?</span> <span class="nx">total</span><span class="p">:(</span><span class="nx">escape</span><span class="p">?</span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">params</span><span class="p">[</span><span class="nx">param</span><span class="p">]):</span><span class="nx">params</span><span class="p">[</span><span class="nx">param</span><span class="p">]);</span>
-	<span class="p">})</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<h3 id="jsreplace">介绍下，JS中replace的使用方法</h3>
-
-<ul>
-  <li>
-    <p>返回根据正则表达式进行文字替换后的字符串的复制。</p>
-  </li>
-  <li>
-    <p>stringObj.replace(rgExp, replaceText)</p>
-  </li>
-  <li>
-    <p>参数</p>
-  </li>
-</ul>
-
-<blockquote>
-  <p>stringObj</p>
-</blockquote>
-
-<blockquote>
-  <p>必选项。要执行该替换的 String 对象或字符串文字。该字符串不会被 replace 方法修改。</p>
-</blockquote>
-
-<blockquote>
-  <p>rgExp</p>
-</blockquote>
-
-<blockquote>
-  <p>必选项。为包含正则表达式模式或可用标志的正则表达式对象。也可以是 String 对象或文字。如果 rgExp 不是正则表达式对象，它将被转换为字符串，并进行精确的查找；不要尝试将字符串转化为正则表达式。</p>
-</blockquote>
-
-<blockquote>
-  <p>replaceText</p>
-</blockquote>
-
-<blockquote>
-  <p>必选项。是一个String 对象或字符串文字，对于stringObj 中每个匹配 rgExp 中的位置都用该对象所包含的文字加以替换。在 Jscript 5.5 或更新版本中，replaceText 参数也可以是返回替换文本的函数。</p>
-</blockquote>
-
-<h3 id="section">最终结果：</h3>
-
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-	<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"jQuery-1.11.3.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"index.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-	<span class="nt">&lt;title&gt;</span>使用模板<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"test1"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;p&gt;</span>张三<span class="nt">&lt;/p&gt;</span>   
-		<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"test1"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;p&gt;</span>李四<span class="nt">&lt;/p&gt;</span>   
-		<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"test1"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;p&gt;</span>王五<span class="nt">&lt;/p&gt;</span>   
-		<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"test1"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;p&gt;</span>周六<span class="nt">&lt;/p&gt;</span>   
-		<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"test1"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;p&gt;</span>三七<span class="nt">&lt;/p&gt;</span>   
-		<span class="nt">&lt;/div&gt;</span>
-	<span class="nt">&lt;/div&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/template"</span><span class="na">id=</span><span class="s">"test"</span><span class="nt">&gt;</span>
-		<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"test1"</span><span class="o">&gt;</span>
-			<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">$name</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p&gt;  </span><span class="err"> 
-</span>		<span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
-</span>	<span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre>
-</div>
-
-  </div><!-- /.entry-content -->
-</article><!-- /.hentry -->
-
-
 
   </div><!-- /#main -->
   <div class="classification">
       <div class="classification-title">分类</div>
       
       
-        <li><a href="/tags/" class="tag"><span class="term">Web前端总结</span> <span class="count">(5)</span></a></li>
+        <li><a href="/tags/" class="tag"><span class="term">Web前端总结</span> <span class="count">(6)</span></a></li>
       
   </div>
   <div class="clear"></div>

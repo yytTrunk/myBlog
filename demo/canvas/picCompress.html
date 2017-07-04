@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片压缩</title>
+		<style>
+			.hide{
+				display: none;
+			}
+		</style>
+		<script src="../viewport.js"></script>
+	</head>
+	<body>
+		<div class="source-img">
+			原图：<br />
+			<img id="source-img">
+		</div>
+		<div class="preview-img">
+			压缩后预览图：(点击预览图来对比原图)<br />
+			<img id="preview-img"/>
+		</div>
+		<canvas id="source-canvas" class="hide">
+			
+		</canvas>
+		
+		<div>
+			压缩率为0-1之间的小数，数值越小，压缩程度越大
+		<input id="quality" placeholder="请输入压缩率" />   <button id="preview">预览</button>
+		</div>
+		<script type="text/javascript">
+			var source = document.getElementById("source-img");
+			var preview = document.getElementById("preview-img");
+			var sou_can = document.getElementById("source-canvas");
+			var pre_can = document.getElementById("preview-canvas");
+			var pre_btn = document.getElementById("preview");
+			pre_btn.onclick = function(){
+				var quality = parseFloat(document.getElementById("quality").value);
+//				source.onload = function(){
+					var sx = 0;
+					var sy = 0;
+					var width = source.width;
+					var height = source.height;
+					sou_can.width = width;
+					sou_can.height = height;
+					var sou_context = sou_can.getContext('2d');
+					sou_context.drawImage(source,sx,sy,width,height);
+					var dataurl = sou_can.toDataURL('image/jpeg',quality);
+					preview.src = dataurl;
+					preview.width = width*quality;
+					preview.height = height*quality;
+//				}
+//				preview.onload = function(){
+//					var px = 0;
+//					var py = 0;
+//					var pWidth = source.width*quality;
+//					var pHeight = source.height*quality;
+//					pre_can.width = pWidth;
+//					pre_can.height = pHeight;
+//					var pre_context = pre_can.getContext('2d');
+//					pre_context.drawImage(preview, px, py, pWidth ,pHeight);
+//				}
+				preview.onclick=function(){
+					if(preview.width===source.width){
+						preview.width = source.width*quality;
+						preview.height = source.height*quality;
+					}else{
+						preview.width = source.width;
+						preview.height = source.height;
+					}
+				}
+			}
+			source.src = '1.jpeg';
+		</script>
+	</body>
+</html>
